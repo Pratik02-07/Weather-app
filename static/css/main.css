@@ -1,0 +1,492 @@
+@import url('https://fonts.googleapis.com/css2?family=Excalifont:wght@400;500;700&display=swap');
+
+@font-face {
+    font-family: 'Excalifont';
+    src: url('../Excalifont-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* CSS Resets */
+
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;	
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* General styles */
+
+/* body {
+    background: linear-gradient(135deg, #f68700 0%, #4cb372 100%);
+    position: relative;
+    min-height: 100%;
+    height: auto;
+} */
+
+/* City page specific styles */
+body.city-page {
+    background: none;
+}
+
+.city-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url('../assets/citybg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.8);
+}
+
+h1 {
+	font-family: 'Excalifont', 'Excalifont', sans-serif;
+	font-weight: 400;
+	text-align: center;
+	color: black;
+}
+
+h2 {
+	font-family: 'Excalifont', 'Excalifont', sans-serif;
+	font-weight: 500;
+	font-size: 35px;
+	text-align: center;
+	color: white;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+p {
+	font-family: 'Excalifont', sans-serif;
+	font-weight: 400;
+	letter-spacing: 0.15em;
+	font-size: 25px;
+	text-align: center;
+	color: white;
+}
+
+a {
+	font-family: 'Excalifont', sans-serif;
+	font-size: 15px;
+    color: white;
+	text-decoration: none;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.container {
+	display: grid;
+	height: 100vh;
+	grid-template-rows: auto auto 1fr auto;
+	position: relative;
+	overflow: hidden;
+}
+
+/* Background */
+
+.background {
+	grid-row: 1 / -1;
+	grid-column: 1 / -1;
+	z-index: 1;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.background img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	opacity: 0.85;
+	filter: brightness(0.8);
+}
+
+/* Home Page */
+
+.main-header {
+    grid-row: 1;
+    grid-column: 1 / -1;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 36vh;
+}
+
+.main-header h1 {
+    font-size: 80px;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 2rem;
+}
+
+.search-bar {
+    grid-row: 1;
+    grid-column: 1 / -1;
+    z-index: 2;
+    width: 300px;
+    height: 30px;
+    background: white;
+    position: absolute;
+    display: flex;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50px;
+    margin-top: 1rem; /* 6 */
+} 
+
+.search-bar:hover {
+	box-shadow: 0px 1px 5px #000000;
+}
+
+.search-icon {
+	position: absolute;
+	top: 6px;
+	left: 8px;
+	width: 20px;
+	height: 20px;
+}
+
+#search {
+	width: 83%;
+	font-size: 20px;
+	font-family: 'Excalifont', sans-serif;
+	font-weight: 500;
+	position: absolute;
+	left:36px;
+	border: none;
+	outline: none;
+}
+
+/* City Page Text */
+
+.city-header {
+	padding-top: 2%;
+}
+
+.city-header h1 {
+	font-size: 60px;
+	padding-bottom: 1%;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* City Page Button */
+
+.change-button {
+    z-index: 2;
+    height: 40px;
+    width: 140px;
+    border-radius: 20px;
+	background: rgba(54, 54, 54, 0.986);
+    backdrop-filter: blur(10px);
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.371);
+}
+
+.change-button:hover {
+    background: rgba(39, 39, 39, 0.826);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.change-button:active {
+    transform: translateY(0);
+}
+
+.chevron-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    opacity: 0.9;
+    transition: transform 0.3s ease;
+}
+
+.change-button:hover .chevron-icon {
+    transform: translateX(-3px);
+}
+
+.change-button a {
+    color: white;
+    font-family: 'Excalifont', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Daily Forecast Section  */
+.daily-forecast {
+	margin: 1rem auto;
+	display: grid;
+	grid-template-columns: auto repeat(3, minmax(auto, max-content));
+	gap: 1.5rem;
+	justify-content: center;
+	align-items: center;
+	z-index: 2;
+}
+
+#current-temp {
+	font-size: 80px;
+	justify-self: end;
+	align-self: center;
+}
+
+.daily-section {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 1rem;
+	align-items: center;
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(5px);
+	border-radius: 10px;
+	padding: 10px 20px;
+}
+
+.weather-icon {
+	width: 50px;
+	height: 50px;
+	align-self: center;
+	padding-top: 10px;
+}
+
+.forecast-text {
+	padding-left: 15px;
+	align-self: center;
+	color: white;
+	font-size: 22px;
+	white-space: nowrap;
+}
+
+/* Five Day Forecast Section */
+.five-day-forecast {
+    margin-top: 5%;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 5vh 5vw;
+    border-radius: 10px;
+    border: solid 1px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.divider {
+	border-top: 1px solid black;
+	width: 70%;
+	margin: 8rem auto;
+	opacity: 0.5;
+}
+
+.five-day {
+	display: grid;
+	grid-template-columns: repeat(5, minmax(120px, 160px));
+	gap: 1rem;
+	justify-content: center;
+	margin: 4rem auto;
+	padding: 0 1rem;
+	z-index: 2;
+}
+
+.forecast-item {
+	display: grid;
+	grid-template-rows: auto auto auto;
+	gap: 0.5rem;
+	justify-items: center;
+	align-items: center;
+	padding: 1rem;
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(5px);
+	border-radius: 10px;
+}
+
+
+/* Error Page */
+#error-text {
+    grid-row: 1 / -1;
+	grid-column: 1 / -1;
+    align-self: center;
+    justify-self: center;
+    z-index: 2;
+    color: white;
+    font-size: 50px;
+}
+
+#error-background {
+    opacity: 1.0;
+}
+
+/* Footer */
+.footer {
+	grid-row: auto;
+	grid-column: 1 / -1;
+	z-index: 2;
+	text-align: center;
+	width: 100%;
+	padding: 4px 0;
+	margin-top: auto;
+	/* background-color: rgba(0, 0, 0, 0.1); */
+	/* backdrop-filter: blur(5px); */	
+	position: fixed;
+	bottom: 0;
+	left: 0;
+}
+
+.footer a {
+	color: white;
+	opacity: 0.8;
+	transition: opacity 0.3s ease;
+}
+
+.footer a:hover {
+	opacity: 1;
+}
+
+.footer .separator {
+	color: white;
+	opacity: 0.8;
+	margin: 0 10px;
+	font-family: 'Excalifont', sans-serif;
+}
+
+/* Media Queries for Home Page */
+/* Laptop and iPad */
+@media (min-width: 1000px) {
+    #search {
+        top: 3px;
+    }
+}
+
+/* iPhone */
+@media (max-width: 450px) {
+	.main-header h1 {
+	  font-size: 65px;
+	  position: relative;
+	  top: 90px;
+	}
+
+	.search-bar {
+		width: 300px;
+	}
+
+	#search {
+	    width: 75%;
+	    height: 20px;
+	}
+}
+
+/* Media Queries for City Page */
+@media (max-width: 800px) {
+	.city-header {
+		padding-top: 10%;
+	}
+	.five-day {
+		grid-template-columns: repeat(5, 1fr);
+		margin-bottom: 5%;
+	}
+}
+
+@media (max-width: 550px) {
+	.city-header {
+		padding-top: 20%;
+	}
+
+	.city-header h1 {
+		font-size: 50px;
+		padding-bottom: 5%;
+	}
+
+	h2 {
+		font-size: 30px;
+	}
+
+	#current-temp {
+		font-size: 50px;
+		position: relative;
+		top: 90%;
+	}
+}
+
+@media (max-width: 450px) {
+	.city-header {
+		padding-top: 23%;
+	}
+
+	p {
+		font-size: 20px;
+	}
+
+	#current-temp {
+		font-size: 43px;
+		padding-right: 0%;
+	}
+
+	.weather-icon {
+		width: 45px;
+		height: 45px;
+	}
+
+	.five-day {
+		padding-bottom: 9%;
+	}
+
+	#error-text {
+	    font-size: 40px;
+	}
+}
