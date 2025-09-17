@@ -3,7 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000">
+    <meta name="format-detection" content="telephone=no">
     <!-- displays site properly based on user's device -->
     <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
     <title> Weather App </title>
@@ -19,7 +23,7 @@
                 <img src="/static/assets/weather-home-background.jpg" alt="" class="desktop-background">
             </div>
             <div class="search-bar">
-                <img class="search-icon" src="https://img.icons8.com/?size=100&id=59878&format=png&color=000000" alt="">
+                <img class="search-icon" src="https://img.icons8.com/?size=100&id=59878&format=png&color=000000" alt="Search icon">
                 <form class="search" action="" autocomplete="off" method="post">
                     <input type="text" name="search" id="search" tabindex="1" placeholder="Search for a city">
                 </form>

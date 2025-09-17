@@ -2,7 +2,11 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="theme-color" content="#000000">
+        <meta name="format-detection" content="telephone=no">
         <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
         <title> Error </title>
     </head>
@@ -14,7 +18,7 @@
                 </div>
                 <div class="change-button">
                     <img class="chevron-icon" src="https://img.icons8.com/?size=100&id=39789&format=png&color=000000" alt="">
-                    <a href="{{ url_for('home')}}"> MAIN PAGE </a>
+                    <a href="{{ url_for('home')}}"> Back </a>
                 </div>
                 <h2 id="error-text"> This city does not exist. Please try again. </h2>
                  <div class="footer">
