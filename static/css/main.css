@@ -1065,7 +1065,7 @@ a:focus-visible {
 @media print {
 	.background,
 	.city-background,
-	.desktop-background {
+	.desktop-background {`
 		display: none;
 	}
 	
@@ -1086,4 +1086,4 @@ a:focus-visible {
 	.search-bar {
 		display: none;
 	}
-}
+
