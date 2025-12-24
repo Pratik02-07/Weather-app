@@ -5,7 +5,7 @@ export const WeatherIcons: { [key: string]: React.ReactNode } = {
     </svg>
   ),
   Clear: (
-    <svg className="w-16 h-16" viewBox="0 0 100 100" fill="none" src="http://www.w3.org/2000/svg">
+    <svg className="w-16 h-16" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="50" cy="50" r="20" fill="#FFD54F" />
       <line x1="50" y1="10" x2="50" y2="25" stroke="#FFD54F" strokeWidth="3" strokeLinecap="round" />
       <line x1="50" y1="75" x2="50" y2="90" stroke="#FFD54F" strokeWidth="3" strokeLinecap="round" />
