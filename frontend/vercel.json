@@ -3,7 +3,6 @@
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "framework": "nextjs",
-  "rootDirectory": "frontend",
   "env": {
     "NEXT_PUBLIC_OWM_API_KEY": "@next_public_owm_api_key"
   }
