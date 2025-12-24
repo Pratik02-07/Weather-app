@@ -103,7 +103,14 @@ def get_weather():
     }
 
     return jsonify(response), 200
+@app.route("/", methods=["GET", "HEAD"])
+def index():
+    return jsonify({"status": "ok"}), 200
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Use PORT env var (provided by many hosts) and bind to all interfaces
+    port = int(os.environ.get("PORT", 5000))
+    host = os.environ.get("HOST", "0.0.0.0")
+    debug = os.environ.get("FLASK_DEBUG", "False").lower() in ("1", "true", "yes")
+    app.run(host=host, port=port, debug=debug)
