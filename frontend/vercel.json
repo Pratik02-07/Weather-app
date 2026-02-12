@@ -2,8 +2,5 @@
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
-  "framework": "nextjs",
-  "env": {
-    "NEXT_PUBLIC_OWM_API_KEY": "@next_public_owm_api_key"
-  }
+  "framework": "nextjs"
 }

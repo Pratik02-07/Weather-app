@@ -1,82 +1,116 @@
-  "use client";
+"use client";
 
-  import SearchForm from "@/components/SearchForm";
-  import WeatherCard from "@/components/WeatherCard";
-  import ErrorDisplay from "@/components/ErrorDisplay";
-  import Footer from "@/components/Footer";
-  import { useWeather } from "@/hooks/useWeather";
+import { useRouter } from "next/navigation";
+import CitySearch from "@/components/CitySearch";
+import Beams from "@/components/Beams";
+import RotatingText from "@/components/RotatingText";
 
-  export default function Home() {
-    const { weather, loading, error, fetchWeather } = useWeather();
+export default function Home() {
+  const router = useRouter();
 
-    return (
-      <main className="relative w-full min-h-screen overflow-hidden">
-        {/* Beach/Ocean Background */}
-        <div className="fixed inset-0 -z-10">
-          {/* Sky gradient */}
-          <div className="absolute inset-0 bg-gradient-to-b from-sky-300 via-sky-200 to-cyan-100"></div>
-          
-          {/* Ocean waves effect */}
-          <div className="absolute bottom-0 left-0 right-0 h-1/3">
-            <svg className="w-full h-full" viewBox="0 0 1200 400" preserveAspectRatio="none">
-              <defs>
-                <linearGradient id="oceanGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" style={{ stopColor: "#0ea5e9", stopOpacity: 0.8 }} />
-                  <stop offset="50%" style={{ stopColor: "#06b6d4", stopOpacity: 0.9 }} />
-                  <stop offset="100%" style={{ stopColor: "#0369a1", stopOpacity: 1 }} />
-                </linearGradient>
-              </defs>
-              <path
-                d="M0,100 Q300,50 600,100 T1200,100 L1200,400 L0,400 Z"
-                fill="url(#oceanGradient)"
-              />
-              <path
-                d="M0,150 Q300,100 600,150 T1200,150 L1200,400 L0,400 Z"
-                fill="#06b6d4"
-                opacity="0.7"
-              />
-              <path
-                d="M0,200 Q300,150 600,200 T1200,200 L1200,400 L0,400 Z"
-                fill="#0284c7"
-                opacity="0.5"
-              />
-            </svg>
-          </div>
+  const handleSearch = (city: string) => {
+    const formattedCity = city.toLowerCase().replace(/\s+/g, '-');
+    router.push(`/${encodeURIComponent(formattedCity)}`);
+  };
 
-          {/* Sandy beach section */}
-          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-b from-amber-100 to-amber-200 opacity-80"></div>
+  return (
+    <main className="min-h-screen p-3 sm:p-4 md:p-6 relative overflow-hidden flex flex-col">
+      {/* Beams background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <Beams
+          beamWidth={3}
+          beamHeight={30}
+          beamNumber={20}
+          lightColor="#ffffff"
+          speed={2}
+          noiseIntensity={1.75}
+          scale={0.2}
+          rotation={30}
+        />
+      </div>
 
-          {/* Decorative palm trees */}
-          <div className="absolute bottom-32 right-10 opacity-30">
-            <div className="text-8xl">🌴</div>
-          </div>
-          <div className="absolute bottom-32 left-10 opacity-30">
-            <div className="text-8xl">🌴</div>
-          </div>
-        </div>
-
-        {/* Content Container */}
-        <div className="relative z-10 flex flex-col items-center justify-start w-full h-screen pt-6 pb-4 px-4">
-          <h1 className="text-4xl font-bold mb-1 text-white drop-shadow-lg text-center">Weather App</h1>
-          <p className="text-white drop-shadow-md text-sm mb-4 text-center">Get current weather and forecasts</p>
-
-          <SearchForm onSearch={fetchWeather} />
-
-          {/* Content Area */}
-          <div className="flex-1 w-full max-w-lg overflow-y-auto custom-scroll">
-            <div className="flex flex-col items-center">
-              {loading && (
-                <p className="mt-4 text-white font-semibold animate-pulse drop-shadow-md">
-                  🔄 Loading weather data...
-                </p>
-              )}
-              {error && <ErrorDisplay error={error} />}
-              {weather && <WeatherCard weather={weather} />}
+      <div className="max-w-7xl mx-auto relative z-10 flex-1 flex flex-col w-full">
+        {/* Header */}
+        <header className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 sm:gap-4 mb-6 sm:mb-8">
+          <div className="flex items-center gap-3 sm:gap-4">
+            <div>
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">
+                Weather App
+              </h1>
+              <p className="text-xs text-neutral-300 mt-0.5 sm:mt-1 font-medium">Real-time weather updates</p>
             </div>
           </div>
 
-          <Footer />
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 flex-1 md:max-w-2xl">
+            <div className="flex-1">
+              <CitySearch onSearch={handleSearch} />
+            </div>
+          </div>
+        </header>
+
+        {/* Empty State */}
+        <div className="flex items-center justify-center flex-1">
+          <div className="text-center max-w-lg glass-effect rounded-2xl sm:rounded-3xl p-8 sm:p-10 md:p-12 mx-4">
+            <div className="text-6xl sm:text-7xl md:text-8xl mb-4 sm:mb-6">🌤️</div>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 text-white">
+              Welcome to Weather App
+            </h2>
+            <div className="mb-6 sm:mb-8 flex justify-center">
+              <div className="w-[180px] sm:w-[200px] h-[40px] sm:h-[44px] flex items-center justify-center overflow-hidden">
+                <RotatingText
+                  texts={[
+                    'Real-time Updates',
+                    '7-Day Forecasts',
+                    'Global Coverage',
+                    'Accurate Data'
+                  ]}
+                  mainClassName="w-full inline-flex px-3 py-2 bg-white/10 text-white rounded-lg text-xs sm:text-sm font-medium justify-center whitespace-nowrap"
+                  staggerFrom="last"
+                  initial={{ y: "100%", opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: "-120%", opacity: 0 }}
+                  staggerDuration={0.015}
+                  splitLevelClassName="inline-flex"
+                  elementLevelClassName="inline-block"
+                  transition={{ type: "spring", damping: 35, stiffness: 500 }}
+                  rotationInterval={2500}
+                />
+              </div>
+            </div>
+            <p className="text-neutral-200 text-sm sm:text-base leading-relaxed mb-6 sm:mb-8 px-2">
+              Discover weather conditions and forecasts for any city around the world
+            </p>
+            <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
+              {['Kolhapur', 'Pune', 'Mumbai', 'Delhi'].map((city) => (
+                <button
+                  key={city}
+                  onClick={() => handleSearch(city)}
+                  className="px-4 sm:px-5 py-1.5 sm:py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold rounded-full text-xs sm:text-sm transition-all transform hover:scale-105"
+                >
+                  {city}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
-      </main>
-    );
-  }
+      </div>
+
+      {/* Footer */}
+      <footer className="max-w-7xl mx-auto relative z-10 mt-auto py-4 w-full">
+        <div className="text-center px-4">
+          <p className="text-neutral-400 text-xs">
+            Made with <span className="text-red-400">❤</span> by{' '}
+            <a 
+              href="https://github.com/pratik02-07" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white hover:text-neutral-200 transition-colors font-medium"
+            >
+              @pratik02-07
+            </a>
+          </p>
+        </div>
+      </footer>
+    </main>
+  );
+}
