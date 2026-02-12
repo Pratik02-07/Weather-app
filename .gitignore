@@ -215,7 +215,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 frontend/src/app/api/weather/route.d.ts
-frontend/src/app/api
 frontend/.env.local
 frontend/.env
 backend/.env
