@@ -1,6 +1,6 @@
 "use client";
 
-import { AirQuality } from "@/types/weather";
+import { AirQuality } from "../types/weather";
 
 interface AirQualityCardProps {
   airQuality: AirQuality;

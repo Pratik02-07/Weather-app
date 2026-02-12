@@ -1,6 +1,6 @@
 "use client";
 
-import { WeatherData } from "@/types/weather";
+import { WeatherData } from "../types/weather";
 import Image from "next/image";
 
 interface TodayWeatherProps {

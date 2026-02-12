@@ -1,6 +1,6 @@
 "use client";
 
-import { ForecastItem } from "@/types/weather";
+import { ForecastItem } from "../types/weather";
 import Image from "next/image";
 
 interface ForecastListProps {

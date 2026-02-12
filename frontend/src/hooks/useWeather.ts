@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { getWeather } from "@/services/weather.service";
-import { WeatherData } from "@/types/weather";
+import { getWeather } from "../services/weather.service";
+import { WeatherData } from "../types/weather";
 
 export function useWeather() {
   const [weather, setWeather] = useState<WeatherData | null>(null);

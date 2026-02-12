@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import CitySearch from "@/components/CitySearch";
-import Beams from "@/components/Beams";
-import RotatingText from "@/components/RotatingText";
+import CitySearch from "../components/CitySearch";
+import Beams from "../components/Beams";
+import RotatingText from "../components/RotatingText";
 
 export default function Home() {
   const router = useRouter();

@@ -2,13 +2,13 @@
 
 import { useEffect, useState, use } from "react";
 import { useRouter } from "next/navigation";
-import { useWeather } from "@/hooks/useWeather";
-import CitySearch from "@/components/CitySearch";
-import TodayWeather from "@/components/TodayWeather";
-import ForecastList from "@/components/ForecastList";
-import AirQualityCard from "@/components/AirQualityCard";
-import SunTimesCard from "@/components/SunTimesCard";
-import Beams from "@/components/Beams";
+import { useWeather } from "../../hooks/useWeather";
+import CitySearch from "../../components/CitySearch";
+import TodayWeather from "../../components/TodayWeather";
+import ForecastList from "../../components/ForecastList";
+import AirQualityCard from "../../components/AirQualityCard";
+import SunTimesCard from "../../components/SunTimesCard";
+import Beams from "../../components/Beams";
 import Image from "next/image";
 
 interface CityPageProps {
