@@ -211,6 +211,11 @@ yarn-error.log*
 # vercel
 .vercel
 
+.env.local
+frontend/.env.local
+agent/.env
+agent/.env.local
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
