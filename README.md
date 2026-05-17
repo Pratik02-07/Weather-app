@@ -1,147 +1,176 @@
 # Weather App 2.0
 
-A modern weather application with an AI assistant.
-
-This repository contains:
-- A Next.js frontend for city weather, hourly and multi-day forecasts, air quality, and weather details.
-- A Python FastAPI backend agent for natural-language weather and travel guidance.
-
-## What Is New
-
-Compared to the earlier version, the project now includes:
-- Integrated Weather AI chat in the city page (floating assistant UI).
-- Dedicated Python agent service with multiple AI/weather endpoints.
-- Hourly forecast panel and expanded weather detail cards.
-- In-memory caching in the weather API route for faster repeated city queries.
-- Enhanced weather insights generation and recommendation logic.
+A modern and responsive weather application built with **Next.js 16**, **React 19**, and **TypeScript** that provides real-time weather data and 5-day forecasts using the [OpenWeather API](https://openweathermap.org/api). Features a stunning glass-morphism UI with animated beams background and smooth transitions.
 
 ## Features
 
-### Frontend (Next.js)
-- Search weather by city and route to dynamic pages (`/[city]`).
-- Current weather card (temperature, feels like, humidity, wind, UV).
-- Multi-day forecast list (data currently returned up to 5 days).
-- Hourly forecast strip.
-- Additional cards for sunrise/sunset and AQI summary.
-- Responsive UI with glassmorphism styling.
+### Current Weather Display
+- 🌡️ Real-time temperature with "feels like" indicator
+- ☁️ Weather conditions with dynamic WebP icons
+- 📊 High/Low temperature ranges
+- 💨 Wind speed information (m/s)
+- 📅 Current date and location
+- 🌅 Sunrise and sunset times
+- 💧 Humidity levels
 
-### Weather Data API (Next.js Route)
-- Geocoding lookup by city name.
-- Current weather retrieval.
-- Forecast retrieval and formatting.
-- Air quality data (AQI, PM2.5, PM10, O3, NO2).
-- UV index retrieval.
-- Computed weather insights.
+### 5-Day Forecast
+- 📈 Daily temperature predictions
+- 🎨 Animated weather condition icons
+- 📆 Day-wise breakdown with hover effects
+- 🎯 Accurate forecasting with smooth transitions
 
-### AI Agent Backend (FastAPI)
-- Natural language weather responses (`/agent/agentic`).
-- Endpoint set for weather, forecast, rain, wind, nearby places, travel-time advice, and personalized report.
-- OpenRouter-powered response generation with OpenWeather-backed tools.
+### Air Quality Monitoring
+- �️ Real-time AQI (Air Quality Index)
+- � PM2.5 and PM10 particle measurements
+- 🎨 Color-coded quality levels (Good to Very Poor)
+- 💡 Visual indicators for air quality status
 
-## Tech Stack
+### User Interface
+- ✨ Glass-morphism design with backdrop blur effects
+- 🌟 Animated beams background with customizable parameters
+- � Fully cresponsive design (mobile, tablet, desktop)
+- 🎭 Smooth page transitions and animations
+- 🔍 Smart city search with autocomplete
+- 🎯 Popular cities quick access
+- 🔄 Rotating text animations on home page
+- 🎨 Gradient orbs and hover effects
+
+### Error Handling
+- 🔍 Smart error detection with visual feedback
+- 💡 Context-specific error messages
+- 🛠️ User-friendly error states
+- ✅ Loading states with animated spinners
+
+## Technologies Used
 
 ### Frontend
-- Next.js 16.1.1
-- React 19.2.3
-- Axios 1.13.2
-- Tailwind CSS 4
-- Lucide React
+- **Framework**: Next.js 16.1.1 (App Router with React 19)
+- **Language**: TypeScript 5
+- **UI Library**: React 19.2.3
+- **Styling**: Tailwind CSS 4 with PostCSS
+- **Components**: shadcn/ui (Radix UI primitives)
+- **HTTP Client**: Axios 1.13.2
+- **Form Handling**: React Hook Form 7.69.0 + Zod 4.2.1 validation
+- **Animations**: Framer Motion 12.23.26
+- **3D Graphics**: Three.js 0.182.0 with React Three Fiber
+- **Icons**: Custom WebP weather icons + Lucide React
+- **Utilities**: clsx, tailwind-merge, class-variance-authority
 
-### AI Backend
-- FastAPI
-- Uvicorn
-- Pydantic
-- Python Dotenv
-- HTTPX
-- Requests
+### Backend (Serverless)
+- **Runtime**: Node.js on Vercel Edge Functions
+- **Language**: TypeScript
+- **API Type**: Next.js 16 API Routes
 
-### External Services
-- OpenWeather API (geocoding, weather, forecast, air pollution, UV)
-- OpenRouter API (LLM responses)
+### APIs & Services
+- **Weather Data**: [OpenWeather API](https://openweathermap.org/api)
+  - Geocoding API (city name to coordinates)
+  - Current Weather Data API
+  - 5-Day/3-Hour Forecast API
+  - Air Quality API
 
 ## Project Structure
 
-```text
-weather app/
-|- README.md
-|- vercel.json
-|- agent/
-|  |- agent.py
-|  |- main.py
-|  |- requirements.txt
-|  |- .env.example
-|  `- README.md
-`- frontend/
-   |- package.json
-   |- next.config.ts
-   |- tsconfig.json
-   |- public/
-   |  `- assets/
-   |     |- fonts/
-   |     `- images/
-   `- src/
-      |- app/
-      |  |- api/weather/
-      |  |  |- route.js
-      |  |  `- insights.js
-      |  |- [city]/page.jsx
-      |  |- layout.jsx
-      |  `- page.jsx
-      |- components/
-      |  |- CitySearch.jsx
-      |  |- TodayWeather.jsx
-      |  |- ForecastList.jsx
-      |  |- HourlyForecast.jsx
-      |  |- WeatherDetails.jsx
-      |  |- WeatherAgent.jsx
-      |  `- SimpleBackground.jsx
-      |- hooks/useWeather.jsx
-      |- services/weather.service.jsx
-      `- lib/axios.jsx
+```
+frontend/
+├── src/
+│   ├── app/
+│   │   ├── api/
+│   │   │   └── weather/
+│   │   │       └── route.ts          # Weather API endpoint
+│   │   ├── [city]/
+│   │   │   └── page.tsx              # Dynamic city weather page
+│   │   ├── globals.css               # Global styles & animations
+│   │   ├── layout.tsx                # Root layout with fonts
+│   │   └── page.tsx                  # Home page with search
+│   ├── components/
+│   │   ├── AirQualityCard.tsx        # Air quality display
+│   │   ├── Beams.tsx                 # Animated background beams
+│   │   ├── Beams.css                 # Beams animations
+│   │   ├── CitySearch.tsx            # Search with autocomplete
+│   │   ├── ForecastList.tsx          # 5-day forecast list
+│   │   ├── RotatingText.tsx          # Animated rotating text
+│   │   ├── RotatingText.css          # Text animations
+│   │   ├── SunTimesCard.tsx          # Sunrise/sunset display
+│   │   ├── TodayWeather.tsx          # Current weather card
+│   │   └── ui/                       # shadcn/ui components
+│   │       ├── button.tsx
+│   │       ├── card.tsx
+│   │       └── input.tsx
+│   ├── hooks/
+│   │   └── useWeather.ts             # Weather data fetching hook
+│   ├── services/
+│   │   └── weather.service.ts        # Weather API service
+│   ├── types/
+│   │   └── weather.ts                # TypeScript interfaces
+│   ├── lib/
+│   │   ├── axios.ts                  # Axios instance config
+│   │   └── utils.ts                  # Utility functions
+│   └── assets/
+│       └── WeatherIcons.tsx          # Weather icon components
+├── public/
+│   └── assets/
+│       ├── fonts/                    # Custom fonts
+│       │   ├── Bricolage_Grotesque/
+│       │   ├── CormorantGaramond/
+│       │   └── DM_Sans/
+│       └── images/                   # Weather icons & UI assets
+│           ├── icon-sunny.webp
+│           ├── icon-rain.webp
+│           ├── icon-snow.webp
+│           └── ... (more icons)
+├── .env.local                        # Environment variables
+├── .nvmrc                            # Node version specification
+├── components.json                   # shadcn/ui config
+├── next.config.ts                    # Next.js configuration
+├── tailwind.config.ts                # Tailwind CSS config
+├── tsconfig.json                     # TypeScript config
+├── vercel.json                       # Vercel deployment config
+└── package.json                      # Dependencies & scripts
 ```
 
 ## How It Works
 
-1. User searches for a city on the home page.
-2. App routes to `/<city-name>`.
-3. Frontend calls `GET /api/weather?city=<city>`.
-4. API route resolves coordinates and fetches weather + forecast + AQI + UV from OpenWeather.
-5. API route returns formatted payload for current, hourly, forecast, details, and insights.
-6. City page renders weather cards and optional AI chat assistant.
-7. AI chat sends user query to Python backend (`/agent/agentic`) with the selected city.
+1. **Home Page**: User lands on the home page with animated beams background and rotating feature text
+2. **City Search**: User enters a city name or selects from popular cities (Kolhapur, Pune, Mumbai, Delhi, etc.)
+3. **Dynamic Routing**: App navigates to `/[city]` route with URL-friendly city name
+4. **API Call**: Frontend makes request to `/api/weather?city={cityName}`
+5. **Geocoding**: Backend resolves city name to coordinates using OpenWeather Geocoding API
+6. **Weather Data**: Fetches current weather, 5-day forecast, and air quality data
+7. **Data Processing**: Formats and structures the weather data
+8. **Display**: Beautiful glass-morphism UI renders:
+   - Current weather with temperature, conditions, wind speed
+   - 5-day forecast with daily predictions
+   - Sun times (sunrise/sunset)
+   - Air quality index with PM2.5 and PM10 levels
+9. **Animations**: Smooth transitions, hover effects, and loading states enhance UX
 
-## API Endpoints
+## Future Enhancements
 
-### Next.js weather route
-- `GET /api/weather?city=<city>`
-- `POST /api/weather` with body:
+- 📍 Geolocation support for automatic location detection
+- 🌙 Dark/Light mode theme toggle
+- 🌡️ Temperature unit toggle (°C/°F)
+- ❤️ Favorites/Bookmarks for quick city access
+- 📊 Historical weather data and trends
+- 🎨 Customizable themes and color schemes
+- 📱 Progressive Web App (PWA) support
+- 🔔 Weather alerts and notifications
+- 🗺️ Interactive weather maps
+- 📈 Detailed hourly forecasts
 
-```json
-{
-  "action": "compare",
-  "city1": "Pune",
-  "city2": "Mumbai"
-}
-```
+## License
 
-### FastAPI weather agent 
-- `GET /`
-- `GET /health`
-- `POST /agent/agentic`
-- `POST /agent/insights`
-- `POST /agent/weather`
-- `POST /agent/forecast`
-- `POST /agent/rain`
-- `POST /agent/wind`
-- `POST /agent/nearby`
-- `POST /agent/travel-time`
-
+This project is open source and available under the MIT License.
 
 ## Acknowledgments
 
-- OpenWeather API
-- OpenRouter API
-- Next.js and React
-- FastAPI
+- Weather data powered by [OpenWeather API](https://openweathermap.org/api)
+- UI components from [shadcn/ui](https://ui.shadcn.com/)
+- Animations powered by [Framer Motion](https://www.framer.com/motion/)
+- 3D effects with [Three.js](https://threejs.org/) and [React Three Fiber](https://docs.pmnd.rs/react-three-fiber)
+- Icons from [Lucide React](https://lucide.dev/)
+- Built with [Next.js](https://nextjs.org/) and [React](https://react.dev/)
+- Styled with [Tailwind CSS](https://tailwindcss.com/)
 
-Made with 💗 by [@pratik02-07](https://github.com/pratik02-07)
+---
+
+Made with ❤ by [@pratik02-07](https://github.com/pratik02-07)

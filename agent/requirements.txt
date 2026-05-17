@@ -1,9 +1,0 @@
-# Weather AI Agent Requirements
-# Simple version - basic packages only!
-
-fastapi
-uvicorn
-pydantic
-python-dotenv
-httpx
-requests
